@@ -1,0 +1,18 @@
+{
+  "appId": "com.fushao.universalwander",
+  "appName": "环球漫游",
+  "webDir": "dist",
+  "android": {
+    "backgroundColor": "#e8ecdf",
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true
+    },
+    "SystemBars": {
+      "style": "LIGHT",
+      "insetsHandling": "css"
+    }
+  }
+}

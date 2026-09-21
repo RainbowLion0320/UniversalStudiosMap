@@ -11,3 +11,6 @@ output/
 .playwright-cli/
 *.blend1
 *.blend2
+public/data/park.json
+*.keystore
+*.jks

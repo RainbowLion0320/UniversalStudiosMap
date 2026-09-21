@@ -58,3 +58,13 @@ npm run preview    # http://127.0.0.1:4173
 数据展示署名 Powered by ThemeParks.wiki；地图 © OpenStreetMap contributors。模型与网页不使用官方照片作为纹理。详细条件见数据与模型说明。
 
 网页不加载外部瓦片或远程字体；已有模型和快照时，探索与规划不依赖外网。没有 Service Worker，不提供离线安装承诺；刷新排队数据需要联网。
+
+## 安卓 APK
+
+已增加 Android 工程和离线打包脚本，支持横屏 / 竖屏、系统返回键、系统分享与本机自动保存。首页采用地图优先布局，项目清单与行程按需展开。
+
+```sh
+npm run android:release
+```
+
+安装包位于 `output/release/universal-wander-1.0.0.apk`。环境配置、签名备份与使用说明见 [docs/android.md](docs/android.md)。
