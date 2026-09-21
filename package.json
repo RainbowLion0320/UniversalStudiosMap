@@ -37,5 +37,10 @@
   "homepage": "https://github.com/RainbowLion0320/UniversalStudiosMap",
   "bugs": {
     "url": "https://github.com/RainbowLion0320/UniversalStudiosMap/issues"
+  },
+  "overrides": {
+    "xcode": {
+      "uuid": "11.1.1"
+    }
   }
 }

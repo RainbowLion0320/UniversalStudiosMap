@@ -13,7 +13,7 @@
 - Node 路线与时间估算：11 项测试通过。
 - `npm run android:release`：构建成功，release 非调试包，Android 8.0+，target API 36。
 - zipalign 检查通过；APK v2 / v3 签名验证通过；SHA-256 随包输出。
-- `npm audit --omit=dev`：运行依赖 0 个已知漏洞。开发 CLI 的 iOS 工具链间接依赖仍有 npm 提示，不包含于 APK。
+- `npm audit`：全部依赖 0 个已知漏洞（公开发布准备时复核）。CLI 的 xcode 间接依赖 uuid 已通过 override 升级到修复版本 11.1.1，并检查其 CommonJS / UUID 生成兼容性。
 - 飞行模式、关闭 Wi-Fi / 移动数据后，全新安装签名 APK：模型、项目、步道和五站估算正常；排队来源显示离线估算。
 - 在 Android 模拟器中由竖屏旋转至横屏，行程和打卡状态保留。
 - 系统返回键从行程回到地图；更多选项和系统分享菜单正常打开，分享内容包含项目、时间、完成状态及来源说明。只检查系统分享面板，未向任何人发送消息。
