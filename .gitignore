@@ -7,3 +7,7 @@ dist/
 __pycache__/
 # 第三方接口快照仅供本地验证，不随源码公开分发。
 data/local/
+output/
+.playwright-cli/
+*.blend1
+*.blend2
