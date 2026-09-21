@@ -7,6 +7,7 @@ if [[ -z "${JAVA_HOME:-}" ]]; then
   done
 fi
 export ANDROID_HOME="${ANDROID_HOME:-$HOME/Library/Android/sdk}"
+: "${JAVA_HOME:?Set JAVA_HOME to a JDK 21 installation} "
 export PATH="$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
 BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
 SIGNING_DIR="${WANDER_SIGNING_DIR:-$HOME/.local/share/universal-wander/signing}"
@@ -27,11 +28,12 @@ if not password.exists():raise SystemExit('Signing password missing; restore the
 PY
 npm run android:sync
 printf 'sdk.dir=%s\n' "$ANDROID_HOME" > android/local.properties
-(cd android && ./gradlew assembleRelease --console=plain)
-APK="output/release/universal-wander-1.0.0.apk"
+(cd android && ./gradlew :app:assembleRelease --console=plain)
+VERSION="$(node -p 'JSON.parse(require("fs").readFileSync("package.json")).version')"
+APK="output/release/universal-wander-$VERSION.apk"
 "$BUILD_TOOLS/zipalign" -f -p 4 android/app/build/outputs/apk/release/app-release-unsigned.apk output/release/aligned.apk
 "$BUILD_TOOLS/apksigner" sign --ks "$SIGNING_DIR/release.jks" --ks-key-alias wander --ks-pass "file:$SIGNING_DIR/password.txt" --out "$APK" output/release/aligned.apk
 "$BUILD_TOOLS/apksigner" verify --verbose "$APK"
 rm output/release/aligned.apk
-shasum -a 256 "$APK" > "$APK.sha256"
+(cd output/release && shasum -a 256 "universal-wander-$VERSION.apk" > "universal-wander-$VERSION.apk.sha256")
 printf '\nAPK: %s/%s\n' "$PWD" "$APK"

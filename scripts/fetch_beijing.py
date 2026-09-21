@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Fetch a dated local research snapshot using only the Python standard library."""
+import argparse
 import json
 import sys
 from collections import Counter
@@ -14,6 +15,9 @@ BASE = f"https://api.themeparks.wiki/v1/entity/{PARK_ID}"
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--catalog-only', action='store_true', help='Fetch only app display places; reuse committed OSM geometry')
+    args = parser.parse_args()
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     output = ROOT / "data" / "local" / stamp
     output.mkdir(parents=True)
@@ -26,6 +30,8 @@ def main():
         "queue-times": "https://queue-times.com/parks/328/queue_times.json",
         "osm": "https://overpass-api.de/api/interpreter?" + urlencode({"data": query}),
     }
+    if args.catalog_only:
+        sources = {"children": BASE + "/children"}
     manifest = {"startedAt": stamp, "sources": {}, "errors": {}}
     payloads = {}
     for name, url in sources.items():

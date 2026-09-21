@@ -33,10 +33,10 @@ npm run android:release
 
 ## 数据与隐私
 
-- 仅 INTERNET 权限，无定位、联系人、相机和外部存储读取权限；不含广告或分析 SDK。
+- 仅申请网络访问系统权限，无定位、联系人、相机和外部存储读取权限；不含广告或分析 SDK。
 - 关闭 Android 自动备份；行程及实时快照缓存只保存在当前应用数据中。
 - 联网仅向 ThemeParks.wiki 获取公开排队和演出信息。点击来源链接会交给系统浏览器。
-- 个人使用的 APK 内只包含展示所需项目字段，不将 API 原始返回作为公开数据集发布。保留 Powered by ThemeParks.wiki 和 OSM attribution。
+- APK 内只包含展示所需项目字段，不将 API 原始返回作为公开数据集发布。保留 Powered by ThemeParks.wiki 和 OSM attribution。
 - OSM 的真实步道与艺术化建筑独立：路线只沿已收录道路；虚线入口仍需现场核对，不是现场导航保证。
 
 ## 性能
